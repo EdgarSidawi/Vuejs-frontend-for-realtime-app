@@ -12,7 +12,8 @@
                 <label for="exampleInputEmail1">Email address</label>
                 <input
                   type="email"
-                  v-model="form.username"
+                  v-model="form.email"
+                  name="email"
                   class="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
@@ -28,6 +29,7 @@
                 <input
                   type="password"
                   v-model="form.password"
+                  name="password"
                   class="form-control"
                   id="exampleInputPassword1"
                   placeholder="Password"
@@ -47,19 +49,22 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
       form: {
-        username: "",
+        email: "",
         password: ""
       }
     };
   },
   methods: {
     login() {
+      console.log("user data: " + this.form.email + " ," + this.form.password);
       axios
-        .post("/api/auth/login", this.form)
+        .post("http://127.0.0.1:8000/api/auth/login", this.form)
         .then(res => console.log(res))
         .catch(err => console.log(err));
     }

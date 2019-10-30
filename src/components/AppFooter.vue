@@ -1,8 +1,8 @@
-<template>
+<template >
   <footer class="bg-primary">
     <div class="d-flex justify-content-between">
-      <h8 class="mx-3">Realtime App</h8>
-      <h9 class="small">©2019</h9>
+      Realtime App
+      <h5 class="small my-auto">©2019</h5>
     </div>
   </footer>
 </template>
@@ -16,8 +16,8 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* background-color: #333; */
+  background-color: #333;
   color: #fff;
-  height: 4%;
+  height: 30px;
 }
 </style>
