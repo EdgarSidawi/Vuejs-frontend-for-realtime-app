@@ -49,10 +49,12 @@
 <script>
 export default {
   data() {
-      form = {
-          username = "",
-          password = ""
+    return {
+      form: {
+        username: "",
+        password: ""
       }
+    };
   }
 };
 </script>
