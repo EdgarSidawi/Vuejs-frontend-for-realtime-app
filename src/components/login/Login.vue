@@ -7,7 +7,7 @@
             <h5 class="text-center">Login</h5>
           </div>
           <div class="card-body">
-            <form>
+            <form @submit.prevent="login">
               <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
                 <input
@@ -55,6 +55,14 @@ export default {
         password: ""
       }
     };
+  },
+  methods: {
+    login() {
+      axios
+        .post("/api/auth/login", this.form)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+    }
   }
 };
 </script>
