@@ -62,7 +62,6 @@ export default {
   },
   methods: {
     login() {
-      console.log("user data: " + this.form.email + " ," + this.form.password);
       axios
         .post("http://127.0.0.1:8000/api/auth/login", this.form)
         .then(res => console.log(res))
