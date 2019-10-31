@@ -63,7 +63,7 @@ export default {
   methods: {
     login() {
       axios
-        .post("http://127.0.0.1:8000/api/auth/login", this.form)
+        .post("/api/auth/login", this.form)
         .then(res => console.log(res))
         .catch(err => console.log(err));
     }
