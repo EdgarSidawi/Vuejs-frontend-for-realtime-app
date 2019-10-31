@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 class User {
   login(data) {
     axios
@@ -7,4 +9,4 @@ class User {
   }
 }
 
-export default User = new User();
+export default new User();
