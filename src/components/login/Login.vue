@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     login() {
-      //   console.log("user-login ", this.User);
+      console.log("user-login ", this.User);
       this.User.login(this.form);
     }
   }
