@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import axios from 'axios';
+import { store } from './store/store';
 
 import router from './Router/router';
 import User from './Helpers/Users';
@@ -13,5 +14,6 @@ console.log('user ', User);
 
 new Vue({
   render: h => h(App),
-  router
+  router,
+  store
 }).$mount('#app');
