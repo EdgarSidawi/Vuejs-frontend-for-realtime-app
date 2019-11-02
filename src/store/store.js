@@ -15,8 +15,7 @@ export const store = new Vuex.Store({
       state.isLoggedIn = true;
     },
     isLoggedOut: state => {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
+      localStorage.clear();
       state.isLoggedIn = false;
     }
   }

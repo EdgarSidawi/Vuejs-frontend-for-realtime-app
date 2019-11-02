@@ -14,6 +14,11 @@ export default {
   components: {
     AppHeader
     // AppFooter
+  },
+  created() {
+    if (localStorage.getItem("token")) {
+      this.$store.state.isLoggedIn = true;
+    }
   }
 };
 </script>
