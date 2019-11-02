@@ -9,14 +9,36 @@
         </router-link>
         <router-link class="nav-item nav-link mx-3" to="/questions">Ask Question</router-link>
         <router-link class="nav-item nav-link mx-3" to="/category">Category</router-link>
-        <router-link class="nav-item nav-link mx-5" to="/login">Login</router-link>
+        <p v-if="!isLoggedIn">
+          <router-link class="nav-item nav-link mx-5" to="/login">Login</router-link>
+        </p>
+        <p v-else>
+          <a href="#" class="text-reset" @click="logout">Logout</a>
+        </p>
       </div>
     </nav>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      loggedIn: ""
+    };
+  },
+  methods: {
+    logout() {
+      this.$store.commit("isLoggedOut");
+      this.$router.push("/login");
+    }
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.state.isLoggedIn;
+    }
+  }
+};
 </script>
 
 <style>
