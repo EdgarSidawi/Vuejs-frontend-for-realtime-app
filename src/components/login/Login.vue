@@ -8,6 +8,7 @@
           </div>
           <div class="card-body">
             <form @submit.prevent="login">
+              <p class="text-center text-danger">{{error}}</p>
               <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
                 <input
@@ -19,10 +20,10 @@
                   aria-describedby="emailHelp"
                   placeholder="Enter email"
                 />
-                <small
+                <!-- <small
                   id="emailHelp"
                   class="form-text text-muted"
-                >We'll never share your email with anyone else.</small>
+                >We'll never share your email with anyone else.</small>-->
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
@@ -37,7 +38,7 @@
               </div>
               <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <label class="form-check-label" for="exampleCheck1">Keep me logged In</label>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -57,14 +58,22 @@ export default {
       form: {
         email: "",
         password: ""
-      }
+      },
+      error: ""
     };
   },
   methods: {
     login() {
       axios
         .post("/api/auth/login", this.form)
-        .then(res => console.log(res))
+        .then(res => res.data)
+        .then(data => {
+          if (data) {
+            console.log("data: ", data);
+            
+          }
+          this.error = "Invalid email and password";
+        })
         .catch(err => console.log(err));
     }
   }
