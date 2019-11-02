@@ -11,6 +11,7 @@ Vue.config.productionTip = false;
 axios.defaults.baseURL = 'http://127.0.0.1:8000';
 window.User = User;
 console.log('user ', User);
+console.log('Widow.user ', User);
 
 new Vue({
   render: h => h(App),

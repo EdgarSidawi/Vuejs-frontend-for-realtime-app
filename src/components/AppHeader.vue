@@ -9,12 +9,17 @@
         </router-link>
         <router-link class="nav-item nav-link mx-3" to="/questions">Ask Question</router-link>
         <router-link class="nav-item nav-link mx-3" to="/category">Category</router-link>
-        <p v-if="!isLoggedIn">
+      </div>
+      <div class="navbar-nav text-right d-flex justify-content-between">
+        <div v-if="!isLoggedIn">
           <router-link class="nav-item nav-link mx-5" to="/login">Login</router-link>
-        </p>
-        <p v-else>
-          <a href="#" class="text-reset" @click="logout">Logout</a>
-        </p>
+        </div>
+        <div v-if="!isLoggedIn">
+          <router-link class="nav-item nav-link mx-5" to="/signUp">Sign Up</router-link>
+        </div>
+        <div v-else class="navbar-nav text-right">
+          <p class="nav-item nav-link mx-5 m-auto" @click="logout" style="cursor: pointer">Logout</p>
+        </div>
       </div>
     </nav>
   </div>
