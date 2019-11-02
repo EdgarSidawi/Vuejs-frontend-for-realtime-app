@@ -56,10 +56,10 @@ export default {
   data() {
     return {
       form: {
-        email: "",
-        password: ""
+        email: null,
+        password: null
       },
-      error: ""
+      error: null
     };
   },
   methods: {
