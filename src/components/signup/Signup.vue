@@ -4,11 +4,10 @@
       <div class="col-md-5 mx-auto">
         <div class="card card-default">
           <div class="card-header">
-            <h5 class="text-center">Login</h5>
+            <h5 class="text-center">Sign Up</h5>
           </div>
           <div class="card-body">
-            <form @submit.prevent="login">
-              <p class="text-center text-danger">{{error}}</p>
+            <form @submit.prevent="signup">
               <div class="form-group">
                 <label for="name">Name</label>
                 <input
@@ -18,6 +17,7 @@
                   class="form-control"
                   placeholder="Enter Name"
                 />
+                <small class="text-danger" v-if="error.name">{{error.name[0]}}</small>
               </div>
               <div class="form-group">
                 <label for="Email">Email address</label>
@@ -29,6 +29,7 @@
                   aria-describedby="emailHelp"
                   placeholder="Enter email"
                 />
+                <small class="text-danger" v-if="error.email">{{error.email[0]}}</small>
               </div>
               <div class="form-group">
                 <label for="Password">Password</label>
@@ -39,13 +40,14 @@
                   class="form-control"
                   placeholder="Password"
                 />
+                <small class="text-danger" v-if="error.password">{{error.password[0]}}</small>
               </div>
               <div class="form-group">
-                <label for="Password_confirmation">Password</label>
+                <label for="Password_confirmation">Confirm Password</label>
                 <input
                   type="password"
                   v-model="form.password_confirmation"
-                  name="password"
+                  name="password_confirmation"
                   class="form-control"
                   placeholder="Confirm Password"
                 />
@@ -66,16 +68,18 @@ export default {
   data() {
     return {
       form: {
-        email: "",
-        password: ""
+        name: null,
+        email: null,
+        password: null,
+        password_confirmation: null
       },
-      error: ""
+      error: {}
     };
   },
   methods: {
-    login() {
+    signup() {
       axios
-        .post("/api/auth/login", this.form)
+        .post("/api/auth/signup", this.form)
         .then(res => {
           if (res) {
             this.$store.commit("isLoggedIn", res.data);
@@ -84,7 +88,8 @@ export default {
         })
         .catch(err => {
           if (err) {
-            this.error = "Invalid email and password";
+            // console.log("error: ", err.response.data);
+            this.error = err.response.data.errors;
           }
         });
     }

@@ -15,7 +15,7 @@
           <router-link class="nav-item nav-link mx-5" to="/login">Login</router-link>
         </div>
         <div v-if="!isLoggedIn">
-          <router-link class="nav-item nav-link mx-5" to="/signUp">Sign Up</router-link>
+          <router-link class="nav-item nav-link mx-5" to="/signup">Sign Up</router-link>
         </div>
         <div v-else class="navbar-nav text-right">
           <p class="nav-item nav-link mx-5 m-auto" @click="logout" style="cursor: pointer">Logout</p>
