@@ -10,6 +10,9 @@ export const store = new Vuex.Store({
   mutations: {
     isLoggedIn: state => {
       state.isLoggedIn = true;
+    },
+    isLoggedOut: state => {
+      state.isLoggedIn = false;
     }
   }
 });
