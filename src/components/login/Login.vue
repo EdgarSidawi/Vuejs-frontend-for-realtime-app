@@ -66,15 +66,17 @@ export default {
     login() {
       axios
         .post("/api/auth/login", this.form)
-        .then(res => res.data)
-        .then(data => {
-          if (data) {
-            this.$store.commit("isLoggedIn", data);
-          } else {
-            this.error = "Invalid email and password";
+        .then(res => {
+          if (res) {
+            this.$store.commit("isLoggedIn", res.data);
+            this.$router.push("/");
           }
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          if (err) {
+            this.error = "Invalid email and password";
+          }
+        });
     }
   }
 };
