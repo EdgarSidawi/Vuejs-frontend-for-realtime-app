@@ -62,6 +62,11 @@ export default {
       error: null
     };
   },
+  created() {
+      if (this.$store.state.isLoggedIn) {
+          this.$router.push('/forum');
+      }
+  },
   methods: {
     login() {
       axios

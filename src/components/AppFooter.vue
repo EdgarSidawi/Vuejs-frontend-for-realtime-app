@@ -1,5 +1,5 @@
 <template >
-  <footer class="bg-primary">
+  <footer class="bg-primary fixed-bottom text-white">
     <div class="d-flex justify-content-between">
       Realtime App
       <h5 class="small my-auto">©2019</h5>
@@ -12,12 +12,12 @@ export default {};
 </script>
 
 <style scoped>
-footer {
+/* footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   background-color: #333;
   color: #fff;
   height: 30px;
-}
+} */
 </style>
