@@ -69,10 +69,10 @@ export default {
         .then(res => res.data)
         .then(data => {
           if (data) {
-            console.log("data: ", data);
-            
+            this.$store.commit("isLoggedIn", data);
+          } else {
+            this.error = "Invalid email and password";
           }
-          this.error = "Invalid email and password";
         })
         .catch(err => console.log(err));
     }

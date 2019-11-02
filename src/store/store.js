@@ -8,7 +8,10 @@ export const store = new Vuex.Store({
     isLoggedIn: false
   },
   mutations: {
-    isLoggedIn: state => {
+    isLoggedIn: (state, data) => {
+      console.log('store: ', data);
+      localStorage.setItem('token', data.access_token);
+      localStorage.setItem('user', data.user);
       state.isLoggedIn = true;
     },
     isLoggedOut: state => {
