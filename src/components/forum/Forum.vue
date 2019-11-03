@@ -1,5 +1,5 @@
 <template>
-  <h1>FORUM PAGE</h1>
+  <h1>FORUM </h1>
 </template>
 
 <script>
