@@ -1,18 +1,33 @@
 <template>
   <div class="row">
     <div class="col-md-6">
-      <question></question>
+      <question v-for="(id,question) in questions" :key="id" :question="question"></question>
     </div>
     <div class="col-md-6">sidebars</div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import question from "./Question";
 
 export default {
+  data() {
+    return {
+      questions: {}
+    };
+  },
   components: {
     question
+  },
+  created() {
+    axios
+      .get("/api/question")
+      .then(res => {
+        this.questions = res.data.data;
+        console.log("questions: ", this.questions);
+      })
+      .catch(err => console.log(err));
   }
 };
 </script>
