@@ -1,5 +1,12 @@
 <template>
-  <h3>FORUM</h3>
+  <div class="row">
+    <div class="col-md-6">
+      questions
+    </div>
+    <div class="col-md-6">
+      sidebars
+    </div>
+  </div>
 </template>
 
 <script>
