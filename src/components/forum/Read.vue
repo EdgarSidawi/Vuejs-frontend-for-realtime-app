@@ -1,9 +1,12 @@
 <template>
-  <div></div>
+  <div>
+    <show-question :question="question"></show-question>
+  </div>
 </template>
 
 <script>
 import Axios from "axios";
+import showQuestion from "./showQuestion";
 
 export default {
   data() {
@@ -12,9 +15,12 @@ export default {
     };
   },
   created() {
-    Axios.get("api/question/" + this.$route.params.slug)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+    Axios.get("api/question/" + this.$route.params.slug).then(res => {
+      this.question = res.data.data;
+    });
+  },
+  components: {
+    showQuestion
   }
 };
 </script>
