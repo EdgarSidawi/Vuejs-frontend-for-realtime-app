@@ -1,16 +1,20 @@
 <template>
   <div class="row">
     <div class="col-md-6">
-      questions
+      <question></question>
     </div>
-    <div class="col-md-6">
-      sidebars
-    </div>
+    <div class="col-md-6">sidebars</div>
   </div>
 </template>
 
 <script>
-export default {};
+import Question from "./Question";
+
+export default {
+  components: {
+    Question
+  }
+};
 </script>
 
 <style>

@@ -63,9 +63,9 @@ export default {
     };
   },
   created() {
-      if (this.$store.state.isLoggedIn) {
-          this.$router.push('/forum');
-      }
+    if (this.$store.state.isLoggedIn) {
+      this.$router.push("/forum");
+    }
   },
   methods: {
     login() {
