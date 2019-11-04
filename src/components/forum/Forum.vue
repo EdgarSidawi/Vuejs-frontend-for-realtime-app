@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import Question from "./Question";
+import question from "./Question";
 
 export default {
   components: {
-    Question
+    question
   }
 };
 </script>
