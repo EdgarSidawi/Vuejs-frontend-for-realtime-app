@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-md-6">
-      <question v-for="(id,question) in questions" :key="id" :question="question"></question>
+      <question v-for="question in questions" :key="question.title" :question="question"></question>
     </div>
     <div class="col-md-6">sidebars</div>
   </div>
