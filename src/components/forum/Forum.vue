@@ -1,9 +1,9 @@
 <template>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8">
       <question v-for="question in questions" :key="question.title" :question="question"></question>
     </div>
-    <div class="col-md-6">sidebars</div>
+    <div class="col-md-4">sidebars</div>
   </div>
 </template>
 
