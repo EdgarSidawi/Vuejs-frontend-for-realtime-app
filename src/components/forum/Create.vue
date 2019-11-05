@@ -16,6 +16,7 @@
           <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Select</label>
           </div>
+          <p>{{form.category_id}}</p>
           <select class="custom-select" id="inputGroupSelect01" v-model="form.category_id">
             <option
               v-for="category in categories"
@@ -49,6 +50,8 @@ export default {
   },
   created() {
     Axios.get("api/category").then(res => {
+      console.log(res);
+      console.log(this.form.category_id);
       this.categories = res.data.data;
     });
   }
