@@ -31,17 +31,24 @@
 </template>
 
 <script>
+import Axios from "axios";
+
 export default {
   data() {
     return {
       form: {
         title: null,
-        category_id: null
+        category: null
       }
     };
   },
   methods: {
     create() {}
+  },
+  created() {
+    Axios.get("api/categories").then(res => {
+      this.category;
+    });
   }
 };
 </script>
