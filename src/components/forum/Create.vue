@@ -1,17 +1,18 @@
 <template>
-  <div>
-    <form @submit.prevent="login">
-      <div class="form-group">
-        <label for="exampleInputEmail1">Title</label>
-        <input
-          type="text"
-          v-model="form.title"
-          name="title"
-          class="form-control"
-          placeholder="Title"
-        />
-      </div>
-      <div class="form-group">
+  <div class="container py-5">
+    <div>
+      <form @submit.prevent="create">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Title</label>
+          <input
+            type="text"
+            v-model="form.title"
+            name="title"
+            class="form-control"
+            placeholder="Title"
+          />
+        </div>
+        <!-- <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
         <input
           type="password"
@@ -21,18 +22,27 @@
           id="exampleInputPassword1"
           placeholder="Password"
         />
-      </div>
-      <div class="form-group form-select">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-        <label class="form-check-label" for="exampleCheck1">Keep me logged In</label>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+        </div>-->
+
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      form: {
+        title: null
+      }
+    };
+  },
+  methods: {
+    create() {}
+  }
+};
 </script>
 
 <style>
