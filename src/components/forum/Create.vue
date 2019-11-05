@@ -16,7 +16,7 @@
           <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Select</label>
           </div>
-          <select class="custom-select" id="inputGroupSelect01">
+          <select class="custom-select" id="inputGroupSelect01" v-model="category_id">
             <option selected>Choose...</option>
             <option value="1">One</option>
             <option value="2">Two</option>
