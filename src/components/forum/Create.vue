@@ -35,7 +35,8 @@ export default {
   data() {
     return {
       form: {
-        title: null
+        title: null,
+        category_id: null
       }
     };
   },
