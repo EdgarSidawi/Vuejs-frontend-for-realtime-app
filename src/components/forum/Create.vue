@@ -12,17 +12,17 @@
             placeholder="Title"
           />
         </div>
-        <!-- <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input
-          type="password"
-          v-model="form.password"
-          name="password"
-          class="form-control"
-          id="exampleInputPassword1"
-          placeholder="Password"
-        />
-        </div>-->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Select</label>
+          </div>
+          <select class="custom-select" id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
 
         <button type="submit" class="btn btn-primary">Create</button>
       </form>
