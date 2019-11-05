@@ -49,7 +49,6 @@ export default {
   },
   created() {
     Axios.get("api/category").then(res => {
-      console.log(res);
       this.categories = res.data.data;
     });
   }
