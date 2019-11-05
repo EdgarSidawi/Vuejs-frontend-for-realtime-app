@@ -16,11 +16,12 @@
           <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Select</label>
           </div>
-          <select class="custom-select" id="inputGroupSelect01" v-model="category_id">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+          <select class="custom-select" id="inputGroupSelect01" v-model="form.category_id">
+            <option
+              v-for="category in categories"
+              :value="category.id"
+              :key="category.id"
+            >{{category.name}}</option>
           </select>
         </div>
 
@@ -38,16 +39,17 @@ export default {
     return {
       form: {
         title: null,
-        category: null
-      }
+        category_id: null
+      },
+      categories: {}
     };
   },
   methods: {
     create() {}
   },
   created() {
-    Axios.get("api/categories").then(res => {
-      this.category;
+    Axios.get("api/category").then(res => {
+      this.categories = res.data.data;
     });
   }
 };
