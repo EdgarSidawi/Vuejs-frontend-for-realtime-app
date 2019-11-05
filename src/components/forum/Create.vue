@@ -3,7 +3,7 @@
     <div>
       <form @submit.prevent="create">
         <div class="form-group">
-          <label for="exampleInputEmail1">Title</label>
+          <label for="title">Title</label>
           <input
             type="text"
             v-model="form.title"
