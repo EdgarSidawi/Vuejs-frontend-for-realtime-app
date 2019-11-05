@@ -50,7 +50,6 @@ export default {
   created() {
     Axios.get("api/category").then(res => {
       console.log(res);
-      console.log(this.form.category_id);
       this.categories = res.data.data;
     });
   }
