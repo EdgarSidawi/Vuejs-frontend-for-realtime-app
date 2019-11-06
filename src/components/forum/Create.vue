@@ -23,6 +23,10 @@
               :key="category.id"
             >{{category.name}}</option>
           </select>
+          <br />
+        </div>
+        <div>
+          <vue-simplemde v-model="content" ref="markdownEditor" />
         </div>
 
         <button type="submit" class="btn btn-primary">Create</button>
