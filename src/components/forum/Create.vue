@@ -46,7 +46,8 @@ export default {
         category_id: null,
         body: null
       },
-      categories: {}
+      categories: {},
+      errors: {}
     };
   },
   created() {
@@ -57,8 +58,12 @@ export default {
   methods: {
     create() {
       Axios.post("api/question", this.form)
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err.data.response.data));
+        .then(res => {
+          this.$router.push(res.data.path);
+        })
+        .catch(err => {
+          this.errors = err.response.data.error;
+        });
     }
   }
 };

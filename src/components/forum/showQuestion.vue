@@ -4,10 +4,10 @@
       <div class="card-title d-flex justify-content-between">
         <div>
           <h3>{{question.title}}</h3>
-          <div
+          <small
             class="card-subtitle"
             style="color:grey"
-          >{{question.user}} said {{question.created_at}}</div>
+          >{{question.user}} said {{question.created_at}}</small>
         </div>
         <div class="btn btn-primary my-auto mx-5" style="text-align: center, color: teal">5 replies</div>
       </div>
