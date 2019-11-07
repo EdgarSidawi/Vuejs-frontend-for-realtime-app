@@ -56,9 +56,9 @@ export default {
   },
   methods: {
     create() {
-      Axios.post("api/question")
+      Axios.post("api/question", this.form)
         .then(res => console.log(res.data))
-        .catch(err => console.log(err));
+        .catch(err => console.log(err.data.response.data));
     }
   }
 };
