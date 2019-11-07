@@ -26,7 +26,7 @@
           <br />
         </div>
         <div>
-          <vue-simplemde v-model="content" ref="markdownEditor" />
+          <vue-simplemde v-model="form.body" ref="markdownEditor" />
         </div>
 
         <button type="submit" class="btn btn-primary">Create</button>
@@ -43,7 +43,8 @@ export default {
     return {
       form: {
         title: null,
-        category_id: null
+        category_id: null,
+        body: null
       },
       categories: {}
     };
