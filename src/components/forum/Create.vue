@@ -49,13 +49,17 @@ export default {
       categories: {}
     };
   },
-  methods: {
-    create() {}
-  },
   created() {
     Axios.get("api/category").then(res => {
       this.categories = res.data.data;
     });
+  },
+  methods: {
+    create() {
+      Axios.post("api/question")
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err));
+    }
   }
 };
 </script>
