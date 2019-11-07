@@ -1,6 +1,6 @@
 <template>
   <div>
-    <show-question :question="question"></show-question>
+    <show-question :question="question" v-if="question"></show-question>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import showQuestion from "./showQuestion";
 export default {
   data() {
     return {
-      question: {}
+      question: null
     };
   },
   created() {
