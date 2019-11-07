@@ -12,6 +12,7 @@ export const store = new Vuex.Store({
       console.log('store: ', data);
       localStorage.setItem('token', data.access_token);
       localStorage.setItem('user', data.user);
+      localStorage.setItem('user_id', data.user_id);
       state.isLoggedIn = true;
     },
     isLoggedOut: state => {

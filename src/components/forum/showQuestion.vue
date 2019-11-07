@@ -12,7 +12,7 @@
         <div class="btn btn-primary my-auto mx-5" style="text-align: center, color: teal">5 replies</div>
       </div>
       <div class="card-text py-4" v-html="body"></div>
-      <div>
+      <div v-if="own">
         <button class="btn btn-warning">Edit</button>
         <button class="btn btn-danger mx-5">Delete</button>
       </div>
@@ -28,6 +28,9 @@ export default {
   computed: {
     body() {
       return md(this.question.body);
+    },
+    own() {
+      return this.question.user_id == localStorage.getItem("user_id");
     }
   }
 };
