@@ -11,14 +11,19 @@
         </div>
         <div class="btn btn-primary my-auto mx-5" style="text-align: center, color: teal">5 replies</div>
       </div>
-      <div class="card-text py-4">{{question.body}}</div>
+      <div class="card-text py-4">{{body}}</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["question"]
+  props: ["question"],
+  computed: {
+    body() {
+      return this.question.body;
+    }
+  }
 };
 </script>
 
