@@ -36,7 +36,25 @@
 </template>
 
 <script>
-export default {};
+import Axios from "axios";
+export default {
+  data() {
+    return {
+      form: {
+        title: null,
+        category_id: null,
+        body: null
+      },
+      categories: null
+    };
+  },
+  created() {
+    Axios.get(`api/question/${this.$route.params.slug}`).then(res => {
+      this.form = res.data.data;
+      console.log("form: ", this.form);
+    });
+  }
+};
 </script>
 
 <style>

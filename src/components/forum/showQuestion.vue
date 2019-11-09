@@ -13,7 +13,7 @@
       </div>
       <div class="card-text py-4" v-html="body"></div>
       <div v-if="own">
-        <button class="btn btn-warning">Edit</button>
+        <button class="btn btn-warning" @click="edit">Edit</button>
         <button class="btn btn-danger mx-5" @click="destroy">Delete</button>
       </div>
     </div>
@@ -39,6 +39,9 @@ export default {
       Axios.delete(`api/question/${this.question.slug}`)
         .then(this.$router.push("/forum"))
         .catch(err => console.log(err.response.data));
+    },
+    edit() {
+      this.$router.push(`/editQuestion/${this.question.slug}`);
     }
   }
 };
