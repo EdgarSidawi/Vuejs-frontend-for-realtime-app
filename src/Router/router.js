@@ -7,6 +7,7 @@ import forum from '../components/forum/Forum.vue';
 import category from '../components/category/Category.vue';
 import read from '../components/forum/Read.vue';
 import create from '../components/forum/Create.vue';
+import editQuestion from '../components/forum/editQuestion.vue';
 
 Vue.use(VueRouter);
 
@@ -16,7 +17,8 @@ const routes = [
   { path: '/forum', component: forum },
   { path: '/category', component: category },
   { path: '/ask', component: create },
-  { path: '/question/:slug', component: read, name: 'read' }
+  { path: '/question/:slug', component: read },
+  { path: '/editQuestion/:slug', component: editQuestion }
 ];
 
 const router = new VueRouter({
