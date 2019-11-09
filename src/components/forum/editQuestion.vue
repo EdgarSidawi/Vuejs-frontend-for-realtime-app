@@ -48,7 +48,7 @@ export default {
   methods: {
     update() {
       Axios.patch(`api/question/${this.$route.params.slug}`, this.form)
-        .then(res => console.log(res))
+        .then(this.Cancel())
         .catch(err => console.log(err.response.data));
     },
     Cancel() {
