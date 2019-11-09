@@ -1,7 +1,7 @@
 <template>
   <div class="container py-5">
     <div>
-      <form @submit.prevent="create">
+      <form @submit.prevent="update">
         <div class="form-group">
           <label for="title">Title</label>
           <input
@@ -16,20 +16,12 @@
           <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Select</label>
           </div>
-          <select class="custom-select" id="inputGroupSelect01" v-model="form.category_id">
-            <option
-              v-for="category in categories"
-              :value="category.id"
-              :key="category.id"
-            >{{category.name}}</option>
-          </select>
-          <br />
         </div>
         <div>
           <vue-simplemde v-model="form.body" ref="markdownEditor" />
         </div>
 
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">Update</button>
       </form>
     </div>
   </div>
@@ -53,7 +45,13 @@ export default {
     Axios.get(`api/question/${this.$route.params.slug}`).then(res => {
       this.form = res.data.data;
     });
-    Axios.get("api/category").then(res => (this.categories = res.data.data));
+  },
+  methods: {
+    update() {
+      Axios.put(`api/question/${this.$route.params.slug}`, this.form)
+        .then(res => console.log(res))
+        .catch(err => console.log(err.response.data));
+    }
   }
 };
 </script>
