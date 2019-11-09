@@ -37,6 +37,7 @@
 
 <script>
 import Axios from "axios";
+
 export default {
   data() {
     return {
@@ -51,8 +52,8 @@ export default {
   created() {
     Axios.get(`api/question/${this.$route.params.slug}`).then(res => {
       this.form = res.data.data;
-      console.log("form: ", this.form);
     });
+    Axios.get("api/category").then(res => (this.categories = res.data.data));
   }
 };
 </script>
