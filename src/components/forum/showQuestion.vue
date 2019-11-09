@@ -14,7 +14,7 @@
       <div class="card-text py-4" v-html="body"></div>
       <div v-if="own">
         <button class="btn btn-warning">Edit</button>
-        <button class="btn btn-danger mx-5">Delete</button>
+        <button class="btn btn-danger mx-5" @click="destroy">Delete</button>
       </div>
     </div>
   </div>
@@ -22,6 +22,7 @@
 
 <script>
 import md from "marked";
+import Axios from "axios";
 
 export default {
   props: ["question"],
@@ -31,6 +32,13 @@ export default {
     },
     own() {
       return this.question.user_id == localStorage.getItem("user_id");
+    }
+  },
+  methods: {
+    destroy() {
+      Axios.delete(`api/question/${this.$route.params.slug}`).then(res =>
+        console.log(res)
+      );
     }
   }
 };
