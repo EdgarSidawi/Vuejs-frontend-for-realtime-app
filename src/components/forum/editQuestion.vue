@@ -22,6 +22,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Update</button>
+        <button class="btn btn-danger mx-5" @click="Cancel">Cancel</button>
       </form>
     </div>
   </div>
@@ -35,10 +36,8 @@ export default {
     return {
       form: {
         title: null,
-        category_id: null,
         body: null
-      },
-      categories: null
+      }
     };
   },
   created() {
@@ -48,9 +47,12 @@ export default {
   },
   methods: {
     update() {
-      Axios.put(`api/question/${this.$route.params.slug}`, this.form)
+      Axios.patch(`api/question/${this.$route.params.slug}`, this.form)
         .then(res => console.log(res))
         .catch(err => console.log(err.response.data));
+    },
+    Cancel() {
+      this.$router.push(`/question/${this.$route.params.slug}`);
     }
   }
 };
