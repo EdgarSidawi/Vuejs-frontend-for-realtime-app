@@ -36,9 +36,9 @@ export default {
   },
   methods: {
     destroy() {
-      Axios.delete(`api/question/${this.$route.params.slug}`).then(res =>
-        console.log(res)
-      );
+      Axios.delete(`api/question/${this.question.slug}`)
+        .then(this.$router.push("/forum"))
+        .catch(err => console.log(err.response.data));
     }
   }
 };
