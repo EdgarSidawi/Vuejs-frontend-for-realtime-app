@@ -1,6 +1,6 @@
 <template>
   <!-- <div class="container"> -->
-  <div class="row">
+  <div class="row my-2">
     <div class="col-md-8">
       <question v-for="question in questions" :key="question.title" :question="question"></question>
     </div>
