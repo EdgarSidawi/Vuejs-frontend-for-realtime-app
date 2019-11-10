@@ -4,7 +4,7 @@ import VueRouter from 'vue-router';
 import login from '../components/login/Login.vue';
 import signup from '../components/signup/Signup.vue';
 import forum from '../components/forum/Forum.vue';
-import category from '../components/category/Category.vue';
+import category from '../components/category/CreateCategory.vue';
 import read from '../components/forum/Read.vue';
 import create from '../components/forum/Create.vue';
 import editQuestion from '../components/forum/editQuestion.vue';
