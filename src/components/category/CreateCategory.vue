@@ -61,7 +61,6 @@ export default {
     },
     update() {
       Axios.patch(`/api/category/${this.editSlug}`, this.form).then(res => {
-        console.log("slug: ", this.editSlug);
         this.categories.unshift(res.data);
         this.form.name = null;
       });
@@ -74,6 +73,7 @@ export default {
     edit(index) {
       this.form.name = this.categories[index].name;
       this.editSlug = this.categories[index].slug;
+      this.categories.splice(index, 1);
     }
   }
 };
