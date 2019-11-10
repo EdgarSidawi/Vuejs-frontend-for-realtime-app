@@ -4,7 +4,9 @@
     <div class="col-md-8">
       <question v-for="question in questions" :key="question.title" :question="question"></question>
     </div>
-    <div class="col-md-4">sidebars</div>
+    <div class="col-md-4">
+      <app-sidebar></app-sidebar>
+    </div>
   </div>
   <!-- </div> -->
 </template>
@@ -12,6 +14,7 @@
 <script>
 import axios from "axios";
 import question from "./Question";
+import AppSidebar from "./AppSidebar";
 
 export default {
   data() {
@@ -20,7 +23,8 @@ export default {
     };
   },
   components: {
-    question
+    question,
+    AppSidebar
   },
   created() {
     axios
