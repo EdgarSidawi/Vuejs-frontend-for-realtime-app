@@ -60,7 +60,8 @@ export default {
       });
     },
     update() {
-      Axios.patch(`/api/category${this.editSlug}`, this.form).then(res => {
+      Axios.patch(`/api/category/${this.editSlug}`, this.form).then(res => {
+        console.log("slug: ", this.editSlug);
         this.categories.unshift(res.data);
         this.form.name = null;
       });
