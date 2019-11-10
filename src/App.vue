@@ -19,6 +19,9 @@ export default {
     if (localStorage.getItem("token")) {
       this.$store.state.isLoggedIn = true;
     }
+    if (localStorage.getItem("user_id") == 1) {
+      this.$store.state.isAdmin = true;
+    }
   }
 };
 </script>

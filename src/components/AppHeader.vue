@@ -8,7 +8,12 @@
           <span class="sr-only">(current)</span>
         </router-link>
         <router-link v-if="isLoggedIn" class="nav-item nav-link mx-3" to="/ask">Ask Question</router-link>
-        <router-link v-if="isLoggedIn" class="nav-item nav-link mx-3" to="/category">Category</router-link>
+        <router-link
+          v-if="isLoggedIn "
+          v-show="isAdmin"
+          class="nav-item nav-link mx-3"
+          to="/category"
+        >Category</router-link>
       </div>
       <div class="navbar-nav text-right d-flex justify-content-between">
         <div v-if="!isLoggedIn">
@@ -41,6 +46,9 @@ export default {
   computed: {
     isLoggedIn() {
       return this.$store.state.isLoggedIn;
+    },
+    isAdmin() {
+      return this.$store.state.isAdmin;
     }
   }
 };

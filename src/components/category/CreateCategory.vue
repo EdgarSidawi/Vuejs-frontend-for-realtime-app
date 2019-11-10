@@ -45,6 +45,10 @@ export default {
     };
   },
   created() {
+    if (localStorage.getItem("user_id") != 1) {
+      this.$router.push("/forum");
+    }
+
     Axios.get("api/category").then(res => {
       this.categories = res.data.data;
     });

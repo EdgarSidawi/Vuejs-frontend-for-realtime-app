@@ -5,19 +5,27 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    isLoggedIn: false
+    isLoggedIn: false,
+    isAdmin: false
   },
   mutations: {
     isLoggedIn: (state, data) => {
-      console.log('store: ', data);
       localStorage.setItem('token', data.access_token);
       localStorage.setItem('user', data.user);
       localStorage.setItem('user_id', data.user_id);
       state.isLoggedIn = true;
+
+      if (data.user_id == 1) {
+        state.isAdmin = true;
+      }
     },
     isLoggedOut: state => {
       localStorage.clear();
       state.isLoggedIn = false;
+      state.isAdmin = false;
+    },
+    isAdmin: state => {
+      state.isAdmin = true;
     }
   }
 });
