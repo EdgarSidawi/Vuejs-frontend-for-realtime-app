@@ -6,7 +6,7 @@
         said {{reply.created_at}}
       </div>
       <div class="card-text" v-html="reply.reply"></div>
-      <div>
+      <div v-if="own">
         <hr />
         <button class="btn btn-warning mr-2">
           <small>edit</small>
@@ -21,7 +21,12 @@
 
 <script>
 export default {
-  props: ["reply"]
+  props: ["reply"],
+  computed: {
+    own() {
+      return localStorage.getItem("user_id") == this.reply.user_id;
+    }
+  }
 };
 </script>
 
