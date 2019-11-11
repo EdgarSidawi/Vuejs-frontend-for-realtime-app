@@ -9,7 +9,10 @@
             style="color:grey"
           >{{question.user}} said {{question.created_at}}</small>
         </div>
-        <div class="btn btn-primary my-auto mx-5" style="text-align: center, color: teal">5 replies</div>
+        <div
+          class="btn btn-primary my-auto mx-5"
+          style="text-align: center, color: teal"
+        >{{question.replies_count}} replies</div>
       </div>
       <div class="card-text py-4" v-html="body"></div>
       <div v-if="own">
