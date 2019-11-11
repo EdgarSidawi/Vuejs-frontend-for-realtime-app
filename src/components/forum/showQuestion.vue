@@ -11,7 +11,7 @@
         </div>
         <div
           class="btn btn-primary my-auto mx-5"
-          style="text-align: center, color: teal"
+          style="text-align: center"
         >{{question.replies_count}} replies</div>
       </div>
       <div class="card-text py-4" v-html="body"></div>
