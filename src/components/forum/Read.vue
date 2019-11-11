@@ -1,12 +1,14 @@
 <template>
-  <div>
-    <show-question :question="question" v-if="question"></show-question>
+  <div v-if="question">
+    <show-question :question="question"></show-question>
+    <replies></replies>
   </div>
 </template>
 
 <script>
 import Axios from "axios";
 import showQuestion from "./showQuestion";
+import replies from "../reply/Replies";
 
 export default {
   data() {
@@ -20,7 +22,8 @@ export default {
     });
   },
   components: {
-    showQuestion
+    showQuestion,
+    replies
   }
 };
 </script>
