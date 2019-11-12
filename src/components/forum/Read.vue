@@ -2,7 +2,7 @@
   <div v-if="question">
     <show-question :question="question"></show-question>
     <replies :replies="question.replies"></replies>
-    <new-reply></new-reply>
+    <new-reply :questionSlug="question.slug"></new-reply>
   </div>
 </template>
 
