@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     destroy(index) {
-      this.$emit("deleteReply", this.index);
+      this.$emit("deleteReply", index);
     }
   }
 };
