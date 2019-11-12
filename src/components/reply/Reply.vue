@@ -38,6 +38,9 @@ export default {
       editing: false
     };
   },
+  created() {
+    this.listen();
+  },
   computed: {
     own() {
       return localStorage.getItem("user_id") == this.reply.user_id;
@@ -52,6 +55,11 @@ export default {
     },
     edit() {
       this.editing = true;
+    },
+    listen() {
+      EventBus.$on("cancelEditing", () => {
+        this.editing = false;
+      });
     }
   },
   components: {
