@@ -1,7 +1,7 @@
 <template>
   <div v-if="question">
     <show-question :question="question"></show-question>
-    <replies :replies="question.replies" @deleteReply="destroy($event)"></replies>
+    <replies :replies="question.replies"></replies>
     <new-reply :questionSlug="question.slug" @newReply="updateReplies($event)"></new-reply>
   </div>
 </template>
@@ -11,6 +11,7 @@ import Axios from "axios";
 import showQuestion from "./showQuestion";
 import replies from "../reply/Replies";
 import NewReply from "../reply/NewReply";
+import { EventBus } from "../../main";
 
 export default {
   data() {
@@ -21,6 +22,10 @@ export default {
   created() {
     Axios.get("api/question/" + this.$route.params.slug).then(res => {
       this.question = res.data.data;
+    });
+
+    EventBus.$on("deleteReply", index => {
+      this.question.replies.splice(index, 1);
     });
   },
   components: {
