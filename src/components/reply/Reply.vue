@@ -11,7 +11,7 @@
         <button class="btn btn-warning mr-2">
           <small>edit</small>
         </button>
-        <button class="btn btn-danger">
+        <button class="btn btn-danger" @click="destroy(index)">
           <small>Delete</small>
         </button>
       </div>
@@ -22,11 +22,14 @@
 
 <script>
 export default {
-  props: ["reply"],
+  props: ["reply", "index"],
   computed: {
     own() {
       return localStorage.getItem("user_id") == this.reply.user_id;
     }
+  },
+  methods: {
+    destroy(index) {}
   }
 };
 </script>
