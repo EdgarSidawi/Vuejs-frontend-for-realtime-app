@@ -2,6 +2,7 @@
   <div v-if="question">
     <show-question :question="question"></show-question>
     <replies :replies="question.replies"></replies>
+    <new-reply></new-reply>
   </div>
 </template>
 
@@ -9,6 +10,7 @@
 import Axios from "axios";
 import showQuestion from "./showQuestion";
 import replies from "../reply/Replies";
+import NewReply from "../reply/NewReply";
 
 export default {
   data() {
@@ -23,7 +25,8 @@ export default {
   },
   components: {
     showQuestion,
-    replies
+    replies,
+    NewReply
   }
 };
 </script>
