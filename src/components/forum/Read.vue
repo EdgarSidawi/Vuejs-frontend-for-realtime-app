@@ -25,6 +25,9 @@ export default {
     });
 
     EventBus.$on("deleteReply", index => {
+      Axios.delete(
+        `api/question/${this.question.slug}/reply/${this.question.replies[index].id}`
+      ).then(res => console.log(res));
       this.question.replies.splice(index, 1);
     });
   },

@@ -5,7 +5,7 @@
         <strong>{{reply.user}}</strong>
         said {{reply.created_at}}
       </div>
-      <div class="card-text" v-html="reply.reply"></div>
+      <div class="card-text" v-html="body"></div>
       <div v-if="own">
         <hr />
         <button class="btn btn-warning mr-2">
@@ -22,12 +22,16 @@
 
 <script>
 import { EventBus } from "../../main";
+import md from "marked";
 
 export default {
   props: ["reply", "index"],
   computed: {
     own() {
       return localStorage.getItem("user_id") == this.reply.user_id;
+    },
+    body() {
+      return md(this.reply.reply);
     }
   },
   methods: {
