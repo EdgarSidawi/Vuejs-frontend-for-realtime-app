@@ -1,7 +1,7 @@
 <template>
   <div v-if="question">
     <show-question :question="question"></show-question>
-    <replies :replies="question.replies"></replies>
+    <replies :replies="question.replies" @deleteReply="destroy($event)"></replies>
     <new-reply :questionSlug="question.slug" @newReply="updateReplies($event)"></new-reply>
   </div>
 </template>
@@ -32,6 +32,9 @@ export default {
     updateReplies(reply) {
       this.question.replies.unshift(reply);
       window.scrollTo(0, 0);
+    },
+    destroy(index) {
+      console.log("index", index);
     }
   }
 };

@@ -16,6 +16,8 @@ axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
   'token'
 )}`;
 
+export const EventBus = new Vue();
+
 new Vue({
   render: h => h(App),
   router,

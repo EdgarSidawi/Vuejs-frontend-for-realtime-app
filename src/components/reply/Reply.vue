@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import EventBus from "../../main";
+
 export default {
   props: ["reply", "index"],
   computed: {
@@ -30,7 +32,7 @@ export default {
   },
   methods: {
     destroy(index) {
-      this.$emit("deleteReply", index);
+      EventBus.$emit("deleteReply", index);
     }
   }
 };
