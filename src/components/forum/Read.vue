@@ -2,7 +2,7 @@
   <div v-if="question">
     <show-question :question="question"></show-question>
     <replies :replies="question.replies"></replies>
-    <new-reply :questionSlug="question.slug"></new-reply>
+    <new-reply :questionSlug="question.slug" @newReply="updateReplies($event)"></new-reply>
   </div>
 </template>
 
@@ -27,6 +27,11 @@ export default {
     showQuestion,
     replies,
     NewReply
+  },
+  methods: {
+    updateReplies(reply) {
+      this.question.replies.unshift(reply);
+    }
   }
 };
 </script>
