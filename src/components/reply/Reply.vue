@@ -5,15 +5,21 @@
         <strong>{{reply.user}}</strong>
         said {{reply.created_at}}
       </div>
-      <div class="card-text" v-html="body"></div>
-      <div v-if="own">
-        <hr />
-        <button class="btn btn-warning mr-2">
-          <small>edit</small>
-        </button>
-        <button class="btn btn-danger" @click="destroy(index)">
-          <small>Delete</small>
-        </button>
+
+      <edit-reply v-if="editing" :reply="reply.reply"></edit-reply>
+
+      <div class="card-text" v-html="body" v-else></div>
+
+      <div v-if="!editing">
+        <div v-if="own">
+          <hr />
+          <button class="btn btn-warning mr-2" @click="edit">
+            <small>edit</small>
+          </button>
+          <button class="btn btn-danger" @click="destroy(index)">
+            <small>Delete</small>
+          </button>
+        </div>
       </div>
     </div>
     <div class></div>
@@ -23,9 +29,15 @@
 <script>
 import { EventBus } from "../../main";
 import md from "marked";
+import EditReply from "./EditReply";
 
 export default {
   props: ["reply", "index"],
+  data() {
+    return {
+      editing: false
+    };
+  },
   computed: {
     own() {
       return localStorage.getItem("user_id") == this.reply.user_id;
@@ -37,7 +49,13 @@ export default {
   methods: {
     destroy(index) {
       EventBus.$emit("deleteReply", index);
+    },
+    edit() {
+      this.editing = true;
     }
+  },
+  components: {
+    EditReply
   }
 };
 </script>
