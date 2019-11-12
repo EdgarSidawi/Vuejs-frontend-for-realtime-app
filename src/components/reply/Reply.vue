@@ -29,7 +29,9 @@ export default {
     }
   },
   methods: {
-    destroy(index) {}
+    destroy(index) {
+      this.$emit("deleteReply", this.index);
+    }
   }
 };
 </script>
