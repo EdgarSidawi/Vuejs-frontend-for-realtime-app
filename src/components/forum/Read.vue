@@ -31,6 +31,7 @@ export default {
   methods: {
     updateReplies(reply) {
       this.question.replies.unshift(reply);
+      window.scrollTo(0, 0);
     }
   }
 };
