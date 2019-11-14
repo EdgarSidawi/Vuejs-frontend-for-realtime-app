@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vue-simplemde v-model="body" ref="markdownEditor" />
+    <vue-simplemde v-model="reply.reply" ref="markdownEditor" />
     <div>
       <hr />
       <button class="btn btn-warning mr-2" @click="update">
@@ -15,19 +15,20 @@
 
 <script>
 import { EventBus } from "../../main";
+import Axios from "axios";
 
 export default {
   props: ["reply"],
-  data() {
-    return {
-      body: this.reply.reply
-    };
-  },
   methods: {
     cancel() {
       EventBus.$emit("cancelEditing");
     },
-    update() {}
+    update() {
+      Axios.patch(
+        `api/question/${this.reply.question_slug}/reply/${this.reply.id}`,
+        { body: this.reply.reply }
+      ).then(this.cancel());
+    }
   }
 };
 </script>
