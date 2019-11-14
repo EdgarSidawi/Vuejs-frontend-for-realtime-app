@@ -20,7 +20,7 @@ export default {
   props: ["reply"],
   data() {
     return {
-      body: this.reply
+      body: this.reply.reply
     };
   },
   methods: {

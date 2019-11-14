@@ -6,7 +6,7 @@
         said {{reply.created_at}}
       </div>
 
-      <edit-reply v-if="editing" :reply="reply.reply"></edit-reply>
+      <edit-reply v-if="editing" :reply="reply"></edit-reply>
 
       <div class="card-text" v-html="body" v-else></div>
 
