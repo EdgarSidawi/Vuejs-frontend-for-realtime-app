@@ -6,10 +6,11 @@
 
 <script>
 export default {
+  props: ["reply"],
   data() {
     return {
-      liked: false,
-      count: 0
+      liked: this.reply.liked,
+      count: this.reply.like_count
     };
   },
   methods: {
