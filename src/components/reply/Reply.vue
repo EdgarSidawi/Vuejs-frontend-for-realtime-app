@@ -7,7 +7,7 @@
           said {{reply.created_at}}
         </div>
         <div>
-          <like></like>
+          <like :reply="reply"></like>
         </div>
       </div>
 
