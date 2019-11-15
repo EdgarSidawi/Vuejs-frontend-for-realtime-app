@@ -2,6 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary d-flex justify-content-between">
       <router-link class="navbar-brand" to="/">Realtime App</router-link>
+      <app-notification></app-notification>
       <div class="navbar-nav text-right">
         <router-link class="nav-item nav-link active mx-3" to="/forum">
           Forum
@@ -31,12 +32,15 @@
 </template>
 
 <script>
+import AppNotification from "./AppNotification";
+
 export default {
   data() {
     return {
       loggedIn: ""
     };
   },
+  components: { AppNotification },
   methods: {
     logout() {
       this.$store.commit("isLoggedOut");
