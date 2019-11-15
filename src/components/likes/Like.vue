@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import Axios from "axios";
 export default {
   props: ["reply"],
   data() {
@@ -16,15 +17,15 @@ export default {
   methods: {
     likeIt() {
       if (this.$store.state.isLoggedIn) {
-        this.liked ? this.increment() : this.decrement();
+        this.liked ? this.decrement() : this.increment();
         this.liked = !this.liked;
       }
     },
     increment() {
-      this.count++;
+      Axios.post(`api/like/${this.reply.id}`).then(this.count++);
     },
     decrement() {
-      this.count--;
+      Axios.delete(`api/like/${this.reply.id}`).then(this.count--);
     }
   }
 };
