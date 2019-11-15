@@ -1,9 +1,14 @@
 <template>
   <div class="card mt-2">
     <div class="card-body">
-      <div class="card-title">
-        <strong>{{reply.user}}</strong>
-        said {{reply.created_at}}
+      <div class="card-title d-flex justify-content-between">
+        <div>
+          <strong>{{reply.user}}</strong>
+          said {{reply.created_at}}
+        </div>
+        <div>
+          <like></like>
+        </div>
       </div>
 
       <edit-reply v-if="editing" :reply="reply"></edit-reply>
@@ -30,6 +35,7 @@
 import { EventBus } from "../../main";
 import md from "marked";
 import EditReply from "./EditReply";
+import Like from "../likes/Like";
 
 export default {
   props: ["reply", "index"],
@@ -63,7 +69,8 @@ export default {
     }
   },
   components: {
-    EditReply
+    EditReply,
+    Like
   }
 };
 </script>

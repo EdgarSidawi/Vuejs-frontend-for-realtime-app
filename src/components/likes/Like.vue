@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="btn btn-warning">like</button>
+    <small class="btn btn-secondary">0 likes</small>
   </div>
 </template>
 
