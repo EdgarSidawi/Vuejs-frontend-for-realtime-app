@@ -2,14 +2,16 @@
   <div>
     <div class="dropdown">
       <button
+        @click="toggler"
+        class="btn btn-secondary dropdown-toggle"
         type="button"
-        class="btn btn-primary dropdown-toggle"
+        id="dropdownMenuButton"
         data-toggle="dropdown"
-      >Dropdown button</button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Link 1</a>
-        <a class="dropdown-item" href="#">Link 2</a>
-        <a class="dropdown-item" href="#">Link 3</a>
+      >notification</button>
+      <div class="dropdown-menu" :class="{'show':show}">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
       </div>
     </div>
   </div>
@@ -23,7 +25,8 @@ export default {
     return {
       read: {},
       unread: {},
-      unreadCount: 0
+      unreadCount: 0,
+      show: false
     };
   },
   created() {
@@ -33,11 +36,14 @@ export default {
   },
   methods: {
     getNotification() {
-      Axios.get("api/notification").then(res => {
+      Axios.post("api/notification").then(res => {
         this.read = res.data.read;
-        this.unread = res.data.unRead;
-        this.unreadCount = res.data.unRead.length();
+        this.unread = res.data.unread;
+        this.unreadCount = res.data.unread.length;
       });
+    },
+    toggler() {
+      this.show = !this.show;
     }
   }
 };
