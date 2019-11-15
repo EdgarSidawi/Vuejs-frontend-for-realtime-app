@@ -1,6 +1,10 @@
 <template>
   <div>
-    <small class="btn btn-secondary" @click="likeIt">{{count}} likes</small>
+    <small
+      class="btn btn-secondary"
+      :style="{backgroundColor: color}"
+      @click="likeIt"
+    >{{count}} likes</small>
   </div>
 </template>
 
@@ -13,6 +17,11 @@ export default {
       liked: this.reply.liked,
       count: this.reply.like_count
     };
+  },
+  computed: {
+    color() {
+      return this.liked ? "red" : "orange";
+    }
   },
   methods: {
     likeIt() {
