@@ -19,6 +19,13 @@
 import Axios from "axios";
 
 export default {
+  data() {
+    return {
+      read: {},
+      unread: {},
+      unreadCount: 0
+    };
+  },
   created() {
     if (this.$store.state.isLoggedIn) {
       this.getNotification();
@@ -26,7 +33,11 @@ export default {
   },
   methods: {
     getNotification() {
-      Axios.get("api/notification");
+      Axios.get("api/notification").then(res => {
+        this.read = res.data.read;
+        this.unread = res.data.unRead;
+        this.unreadCount = res.data.unRead.length();
+      });
     }
   }
 };
