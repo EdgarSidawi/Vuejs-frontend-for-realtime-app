@@ -7,14 +7,12 @@
         type="button"
         id="dropdownMenuButton"
         data-toggle="dropdown"
-      >notification</button>
+      >{{unreadCount}} notifications</button>
       <div class="dropdown-menu" :class="{'show':show}">
         <div v-for="item in unread" :key="item.id">
-          <router-link
-            :to="item.data.path"
-            class="dropdown-item"
-            @click="read()"
-          >{{item.data.question}}</router-link>
+          <router-link :to="item.data.path">
+            <p class="dropdown-item" @click="readIt(item.data)">{{item.data.question}}</p>
+          </router-link>
         </div>
       </div>
     </div>
@@ -41,8 +39,6 @@ export default {
   methods: {
     getNotification() {
       Axios.post("api/notifications").then(res => {
-        console.log("read ", res);
-        console.log("read.data ", res.data);
         this.read = res.data.read;
         this.unread = res.data.unread;
         this.unreadCount = res.data.unread.length;
@@ -51,9 +47,13 @@ export default {
     toggler() {
       this.show = !this.show;
     },
-    read(notification) {
-      Axios.post("api/markAsRead", { id: notification.id }).then(res =>
-        console.log(res);
+    readIt(notification) {
+      Axios.post("api/markAsRead", { id: notification.id }).then(
+        res => console.log(res),
+
+        this.unread.splice(notification, 1),
+        this.read.push(notification),
+        this.unreadCount--
       );
     }
   }
