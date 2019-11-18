@@ -7,12 +7,19 @@
         type="button"
         id="dropdownMenuButton"
         data-toggle="dropdown"
+        :style="{backgroundColor: color}"
       >{{unreadCount}} notifications</button>
       <div class="dropdown-menu" :class="{'show':show}">
         <div v-for="item in unread" :key="item.id">
-          <router-link :to="item.data.path">
-            <p class="dropdown-item" @click="readIt(item.data)">{{item.data.question}}</p>
+          <router-link :to="item.path">
+            <p class="dropdown-item" @click="readIt(item)">{{item.question}}</p>
           </router-link>
+        </div>
+
+        <div class="dropdown-divider"></div>
+
+        <div v-for="item in read" :key="item.id">
+          <p class="dropdown-item">{{item.question}}</p>
         </div>
       </div>
     </div>
@@ -55,6 +62,11 @@ export default {
         this.read.push(notification),
         this.unreadCount--
       );
+    }
+  },
+  computed: {
+    color() {
+      return this.unreadCount > 0 ? "red" : "blue";
     }
   }
 };
