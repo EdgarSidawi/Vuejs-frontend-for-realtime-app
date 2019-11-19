@@ -23,6 +23,12 @@ export default {
       return this.liked ? "red" : "orange";
     }
   },
+  created() {
+    // var socketId = Echo.socketId();
+    Echo.channel("likeChannel").listen("LikeEvent", e => {
+      console.log(e);
+    });
+  },
   methods: {
     likeIt() {
       if (this.$store.state.isLoggedIn) {
