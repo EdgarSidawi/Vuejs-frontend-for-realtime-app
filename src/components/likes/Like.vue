@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import Pusher from 'pusher-js';
+
 import Axios from "axios";
 export default {
   props: ["reply"],
@@ -24,10 +26,7 @@ export default {
     }
   },
   created() {
-    // var socketId = Echo.socketId();
-    Echo.channel("likeChannel").listen("LikeEvent", e => {
-      console.log(e);
-    });
+    
   },
   methods: {
     likeIt() {
