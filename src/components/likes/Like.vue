@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Pusher from 'pusher-js';
+import Pusher from "pusher-js";
 
 import Axios from "axios";
 export default {
@@ -17,7 +17,8 @@ export default {
   data() {
     return {
       liked: this.reply.liked,
-      count: this.reply.like_count
+      count: this.reply.like_count,
+      pusher: null
     };
   },
   computed: {
@@ -25,9 +26,7 @@ export default {
       return this.liked ? "red" : "orange";
     }
   },
-  created() {
-    
-  },
+  created() {},
   methods: {
     likeIt() {
       if (this.$store.state.isLoggedIn) {
