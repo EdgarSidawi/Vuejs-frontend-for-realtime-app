@@ -26,7 +26,12 @@ export default {
       return this.liked ? "red" : "orange";
     }
   },
-  created() {},
+  created() {
+    this.pusher = new Pusher("7b998a7b07a4503ca2de", {
+      encrypted: "true",
+      cluster: "eu"
+    });
+  },
   methods: {
     likeIt() {
       if (this.$store.state.isLoggedIn) {
