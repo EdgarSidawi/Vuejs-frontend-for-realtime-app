@@ -2,7 +2,11 @@
   <div class="container">
     <div class="row my-2">
       <div class="col-md-8">
-        <question v-for="question in questions" :key="question.title" :question="question"></question>
+        <question
+          v-for="question in questions"
+          :key="question.title"
+          :question="question"
+        ></question>
       </div>
       <div class="col-md-4">
         <app-sidebar></app-sidebar>
@@ -12,9 +16,9 @@
 </template>
 
 <script>
-import axios from "axios";
-import question from "./Question";
-import AppSidebar from "./AppSidebar";
+import axios from 'axios';
+import question from './Question';
+import AppSidebar from './AppSidebar';
 
 export default {
   data() {
@@ -27,16 +31,13 @@ export default {
     AppSidebar
   },
   created() {
-    axios
-      .get("/api/question")
-      .then(res => {
-        this.questions = res.data.data;
-        console.log("questions: ", this.questions);
-      })
-      .catch(err => console.log(err));
+    axios.get('/api/question').then(res => {
+      this.questions = res.data.data;
+      // console.log("questions: ", this.questions);
+    });
+    // .catch(err => console.log(err));
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

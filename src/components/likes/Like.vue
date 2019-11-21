@@ -29,9 +29,9 @@ export default {
     }
   },
   created() {
-    Pusher.log = function(msg) {
-      console.log(msg);
-    };
+    // Pusher.log = function(msg) {
+    //   console.log(msg);
+    // };
     this.pusher = new Pusher('9eda72f7cf99cdf049c3', {
       encrypted: 'true',
       cluster: 'eu'
