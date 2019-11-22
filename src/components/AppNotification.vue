@@ -45,11 +45,17 @@ export default {
   },
   methods: {
     getNotification() {
-      Axios.post("api/notifications").then(res => {
-        this.read = res.data.read;
-        this.unread = res.data.unread;
-        this.unreadCount = res.data.unread.length;
-      });
+      Axios.post("api/notifications")
+        .then(res => {
+          this.read = res.data.read;
+          this.unread = res.data.unread;
+          this.unreadCount = res.data.unread.length;
+        })
+        .catch(err => {
+          if (err == "Token is invalid") {
+            this.$store.commit(isLoggedOut);
+          }
+        });
     },
     toggler() {
       this.show = !this.show;
