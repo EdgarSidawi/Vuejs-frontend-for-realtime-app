@@ -18,7 +18,7 @@
 
         <div class="dropdown-divider"></div>
 
-        <div v-for="item in read" :key="item.id">
+        <div v-for="(item,index) in read" :key="index">
           <p class="dropdown-item">{{item.question}}</p>
         </div>
       </div>
