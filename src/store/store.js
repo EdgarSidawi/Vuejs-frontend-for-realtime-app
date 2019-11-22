@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { stat } from 'fs';
 
 Vue.use(Vuex);
 
@@ -7,6 +8,11 @@ export const store = new Vuex.Store({
   state: {
     isLoggedIn: false,
     isAdmin: false
+  },
+  getters: {
+    isLoggedIn: state => {
+      return state.isLoggedIn;
+    }
   },
   mutations: {
     isLoggedIn: (state, data) => {
