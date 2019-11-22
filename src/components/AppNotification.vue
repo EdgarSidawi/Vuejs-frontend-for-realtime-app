@@ -52,8 +52,9 @@ export default {
           this.unreadCount = res.data.unread.length;
         })
         .catch(err => {
-          if (err == "Token is invalid") {
+          if (err.response.data.error == "Token is expired") {
             this.$store.commit("isLoggedOut");
+            this.$router.push("/login");
           }
         });
     },
@@ -62,8 +63,6 @@ export default {
     },
     readIt(notification) {
       Axios.post("api/markAsRead", { id: notification.id }).then(
-        res => console.log(res),
-
         this.unread.splice(notification, 1),
         this.read.push(notification),
         this.unreadCount--
