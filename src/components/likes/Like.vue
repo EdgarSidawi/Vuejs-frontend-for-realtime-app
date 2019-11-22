@@ -4,17 +4,16 @@
       class="btn btn-secondary"
       :style="{ backgroundColor: color }"
       @click="likeIt"
-      >{{ count }} likes</small
-    >
+    >{{ count }} likes</small>
   </div>
 </template>
 
 <script>
-import Pusher from 'pusher-js';
+import Pusher from "pusher-js";
 
-import Axios from 'axios';
+import Axios from "axios";
 export default {
-  props: ['reply'],
+  props: ["reply"],
   data() {
     return {
       liked: this.reply.liked,
@@ -25,19 +24,19 @@ export default {
   },
   computed: {
     color() {
-      return this.liked ? 'red' : 'orange';
+      return this.liked ? "red" : "orange";
     }
   },
   created() {
     // Pusher.log = function(msg) {
     //   console.log(msg);
     // };
-    this.pusher = new Pusher('9eda72f7cf99cdf049c3', {
-      encrypted: 'true',
-      cluster: 'eu'
+    this.pusher = new Pusher("9eda72f7cf99cdf049c3", {
+      encrypted: "true",
+      cluster: "eu"
     });
-    this.channel = this.pusher.subscribe('likeChannel');
-    this.channel.bind('App\\Events\\LikeEvent', e => {
+    this.channel = this.pusher.subscribe("likeChannel");
+    this.channel.bind("App\\Events\\LikeEvent", e => {
       if (this.reply.id == e.id) {
         e.type == 1 ? this.count++ : this.count--;
       }
