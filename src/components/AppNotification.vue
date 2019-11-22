@@ -53,7 +53,7 @@ export default {
         })
         .catch(err => {
           if (err == "Token is invalid") {
-            this.$store.commit(isLoggedOut);
+            this.$store.commit("isLoggedOut");
           }
         });
     },
