@@ -11,6 +11,7 @@
             class="form-control"
             placeholder="Title"
           />
+          <small class="text-danger" v-if="errors.title">{{errors.title[0]}}</small>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
@@ -23,8 +24,11 @@
               :key="category.id"
             >{{category.name}}</option>
           </select>
+          <small class="text-danger" v-if="errors.category_id">The category field is required.</small>
+
           <br />
         </div>
+        <small class="text-danger" v-if="errors.body">{{errors.body[0]}}</small>
         <div>
           <vue-simplemde v-model="form.body" ref="markdownEditor" />
         </div>
@@ -62,7 +66,7 @@ export default {
           this.$router.push(res.data.path);
         })
         .catch(err => {
-          this.errors = err.response.data.error;
+          this.errors = err.response.data.errors;
         });
     }
   },
