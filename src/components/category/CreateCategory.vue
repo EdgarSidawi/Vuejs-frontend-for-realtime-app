@@ -11,9 +11,10 @@
             class="form-control"
             placeholder="Category Name"
           />
+          <small class="text-danger" v-if="error">{{error.name[0]}}</small>
         </div>
-        <button type="submit" class="btn btn-warning" v-if="editSlug">Update</button>
-        <button type="submit" class="btn btn-primary" v-else>Create</button>
+        <button type="submit" class="btn btn-warning" v-if="editSlug" :disabled="disabled">Update</button>
+        <button type="submit" class="btn btn-primary" v-else :disabled="disabled">Create</button>
       </form>
     </div>
 
@@ -41,7 +42,8 @@ export default {
         name: null
       },
       categories: {},
-      editSlug: null
+      editSlug: null,
+      error: null
     };
   },
   created() {
@@ -58,10 +60,14 @@ export default {
       this.editSlug ? this.update() : this.create();
     },
     create() {
-      Axios.post("/api/category", this.form).then(res => {
-        this.categories.unshift(res.data);
-        this.form.name = null;
-      });
+      Axios.post("/api/category", this.form)
+        .then(res => {
+          this.categories.unshift(res.data);
+          this.form.name = null;
+        })
+        .catch(error => {
+          this.error = error.response.data.errors;
+        });
     },
     update() {
       Axios.patch(`/api/category/${this.editSlug}`, this.form).then(res => {
@@ -78,6 +84,11 @@ export default {
       this.form.name = this.categories[index].name;
       this.editSlug = this.categories[index].slug;
       this.categories.splice(index, 1);
+    }
+  },
+  computed: {
+    disabled() {
+      return !this.form.name;
     }
   }
 };
