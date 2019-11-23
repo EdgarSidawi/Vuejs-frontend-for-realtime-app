@@ -29,11 +29,7 @@
           <vue-simplemde v-model="form.body" ref="markdownEditor" />
         </div>
 
-        <button
-          type="submit"
-          class="btn btn-primary"
-          :disabled="!(form.title && form.body && form.category_id)"
-        >Create</button>
+        <button type="submit" class="btn btn-primary" :disabled="disabled">Create</button>
       </form>
     </div>
   </div>
@@ -68,6 +64,11 @@ export default {
         .catch(err => {
           this.errors = err.response.data.error;
         });
+    }
+  },
+  computed: {
+    disabled() {
+      return !(this.form.title && this.form.body && this.form.category_id);
     }
   }
 };
