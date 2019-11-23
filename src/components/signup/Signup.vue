@@ -14,7 +14,7 @@
                   type="text"
                   v-model="form.name"
                   name="name"
-                  class="form-control"
+                  class="form-control" 
                   placeholder="Enter Name"
                 />
                 <small class="text-danger" v-if="error.name">{{error.name[0]}}</small>
