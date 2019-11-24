@@ -34,7 +34,7 @@ export default {
         `api/question/${this.question.slug}/reply/${this.question.replies[index].id}`
       );
       // .then(res => console.log(res));
-      this.question.replies_count--;
+      // this.question.replies_count--;
       this.question.replies.splice(index, 1);
     });
   },
@@ -44,11 +44,11 @@ export default {
     NewReply
   },
   methods: {
-    updateReplies(reply) {
-      this.question.replies.unshift(reply);
-      this.question.replies_count++;
-      window.scrollTo(0, 0);
-    }
+    // updateReplies(reply) {
+    // this.question.replies.unshift(reply);
+    // this.question.replies_count++;
+    // window.scrollTo(0, 0);
+    // }
     // destroy(index) {
     //   console.log('index', index);
     // }

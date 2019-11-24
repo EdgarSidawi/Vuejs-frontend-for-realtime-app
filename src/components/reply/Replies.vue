@@ -34,6 +34,15 @@ export default {
     //     console.log(e);
     //   }
     // );
+    this.pusher = new Pusher("9eda72f7cf99cdf049c3", {
+      encrypted: "true",
+      cluster: "eu"
+    });
+    this.channel = this.pusher.subscribe("newReplyChannel");
+    this.channel.bind("App\\Events\\NewReplyEvent", e => {
+      this.replies.unshift(e.reply);
+      window.scrollTo(0, 0);
+    });
 
     this.pusher = new Pusher("9eda72f7cf99cdf049c3", {
       encrypted: "true",

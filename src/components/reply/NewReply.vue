@@ -19,8 +19,10 @@ export default {
     submit() {
       Axios.post(`api/question/${this.questionSlug}/reply`, { body: this.body })
         .then(res => {
-          this.$emit("newReply", res.data.reply);
-          this.body = "";
+          if (res) {
+            // this.$emit("newReply", res.data.reply);
+            this.body = "";
+          }
         })
         .catch(err => console.log(err.response.data));
     }

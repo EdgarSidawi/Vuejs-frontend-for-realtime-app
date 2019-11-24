@@ -26,6 +26,7 @@
 <script>
 import md from "marked";
 import Axios from "axios";
+import Pusher from "pusher-js";
 
 export default {
   props: ["question"],
@@ -39,13 +40,37 @@ export default {
   },
   methods: {
     destroy() {
-      Axios.delete(`api/question/${this.question.slug}`)
-        .then(this.$router.push("/forum"))
-        .catch(err => console.log(err.response.data));
+      Axios.delete(`api/question/${this.question.slug}`).then(
+        this.$router.push("/forum")
+      );
+      // .catch(err => console.log(err.response.data));
     },
     edit() {
       this.$router.push(`/editQuestion/${this.question.slug}`);
     }
+  },
+  created() {
+    this.pusher = new Pusher("9eda72f7cf99cdf049c3", {
+      encrypted: "true",
+      cluster: "eu"
+    });
+    this.channel = this.pusher.subscribe("newReplyChannel");
+    this.channel.bind("App\\Events\\NewReplyEvent", e => {
+      if (e) {
+        this.question.replies_count++;
+      }
+    });
+
+    this.pusher = new Pusher("9eda72f7cf99cdf049c3", {
+      encrypted: "true",
+      cluster: "eu"
+    });
+    this.channel = this.pusher.subscribe("deleteReplyChannel");
+    this.channel.bind("App\\Events\\DeleteReplyEvent", e => {
+      if (e) {
+        this.question.replies_count--;
+      }
+    });
   }
 };
 </script>
